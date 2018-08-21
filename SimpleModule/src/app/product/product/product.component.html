@@ -1,0 +1,50 @@
+<p>
+  Hi This is range of Product-List!
+</p>
+<div>
+  <input type= 'text' [(ngModel)] = 'TwoWayBinding'>
+</div>
+<br>
+<div>Show two way binding : {{TwoWayBinding}}</div>
+<br>
+<div>
+  Template Input Reference Variable : 
+<input #phone placeholder="phone number">
+
+</div>
+<br>
+<br>
+<div>
+  <table *ngIf = 'products && products.length'>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>
+              <button (click) = 'toggleImage()'>
+               {{showImage ? 'Hide' : 'Show'}}
+               Image
+              </button>
+            </th>
+            <th>Product-Code</th>
+          </tr>
+    </thead>
+    
+    <tbody>
+        <tr *ngFor = 'let product of products'>
+            <td>{{product.productName}}</td>
+            <td>
+              <img *ngIf = 'showImage'
+              [src] = 'product.imageUrl'
+              [style.width.px]='imageWidth'
+              [style.margin.px]='imageMargin'
+              >
+            </td>
+            <td>{{product.productCode}}</td>
+          </tr>
+    </tbody>
+  </table>
+  <br>
+  <p>Call two way data Binding :</p>
+  <button (click)="callPhone(phone.value)">Call</button>
+
+</div>
